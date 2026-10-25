@@ -1,88 +1,35 @@
-<!DOCTYPE html>
-<html lang="ta">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kada Central - பல வியாபாரிகளின் தளம்</title>
-  
-  <!-- QR Code உருவாக்க உதவும் JavaScript 라이브러ரி -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<!-- Kada Central - Secure Order & Survey Form -->
+<section id="order-section" style="max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; font-family: Arial, sans-serif; background-color: #f9f9f9;">
+  <h2 style="color: #2c3e50; text-align: center;">🛒 Kada Central - ஆன்லைன் ஆர்டர் & கருத்துப் படிவம்</h2>
+  <p style="text-align: center; color: #7f8c8d; font-size: 14px;">🔒 AI Anti-Spam & SSL பாதுகாக்கப்பட்ட படிவம்</p>
 
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 15px; background-color: #f4f6f9; }
-    h1 { text-align: center; color: #2c3e50; margin-bottom: 5px; }
-    .badge { background: #27ae60; color: white; padding: 4px 8px; border-radius: 5px; font-size: 12px; }
+  <!-- Formspree அல்லது உங்கள் backend இணைப்பிற்கான படிவம் -->
+  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="kadaOrderForm">
     
-    /* வெப்சைட் QR Code பேனர் */
-    .site-qr-box { background: white; border: 2px dashed #27ae60; border-radius: 12px; padding: 15px; text-align: center; max-width: 350px; margin: 15px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
-    .site-qr-box h3 { margin: 0 0 5px 0; color: #2c3e50; }
-    .site-qr-box p { font-size: 13px; color: #555; margin-bottom: 10px; }
-    #site-qrcode { display: flex; justify-content: center; margin-top: 10px; }
-
-    /* கார்ட் டிசைன் */
-    .product-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px; }
-    .card { background: white; border: 1px solid #ddd; border-radius: 12px; width: 280px; padding: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; }
-    .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
-    .card h3 { margin: 10px 0 5px 0; color: #333; }
-    .vendor { font-size: 13px; color: #7f8c8d; margin-bottom: 5px; }
-    .price { font-weight: bold; color: #e74c3c; font-size: 18px; margin-bottom: 10px; }
-    
-    /* வாட்ஸ்அப் பொத்தான் */
-    .wa-btn { display: block; width: 100%; text-align: center; background-color: #25D366; color: white; padding: 10px 0; text-decoration: none; font-weight: bold; border-radius: 5px; }
-  </style>
-</head>
-<body>
-
-  <h1>🛒 Kada Central</h1>
-  <p style="text-align: center;">உள்ளூர் கடைகளின் நேரடிப் பொருட்கள் தளம் <span class="badge">🔒 Cash on Delivery</span></p>
-
-  <!-- வெப்சைட்டிற்கான பிரத்யேக QR Code -->
-  <div class="site-qr-box">
-    <h3>📲 இந்த வெப்சைட்டை பகிர / திறக்க</h3>
-    <p>கேமராவால் ஸ்கேன் செய்தால் நேரடியாக இந்த வெப்சைட் ஓபன் ஆகும்!</p>
-    <div id="site-qrcode"></div>
-  </div>
-
-  <h2>கடைப் பொருட்கள் (Products)</h2>
-
-  <div class="product-grid">
-    
-    <!-- பொருள் 1: இயற்கை சோப் -->
-    <div class="card">
-      <img src="https://via.placeholder.com/280x160" alt="Soap Image">
-      <h3>இயற்கை சோப் (Soap)</h3>
-      <div class="vendor">கடை: <b>SK Traders</b></div>
-      <div class="price">Rs. 250</div>
-      
-      <!-- வாட்ஸ்அப் பொத்தான் (94XXXXXXXXX இடத்தில் உங்கள் எண்ணை மாற்றவும்) -->
-      <a class="wa-btn" href="https://wa.me/94770000000?text=வணக்கம்!%20Kada%20Central%20மூலம்%20SK%20Traders%20கடையின்%20'இயற்கை%20சோப்'%20ஆர்டர்%20செய்ய%20விரும்புகிறேன்." target="_blank">
-        📲 WhatsApp-இல் ஆர்டர் செய்
-      </a>
+    <!-- வாடிக்கையாளர் பெயர் -->
+    <div style="margin-bottom: 15px;">
+      <label for="name" style="display: block; font-weight: bold; margin-bottom: 5px;">உங்கள் பெயர் / Name:</label>
+      <input type="text" id="name" name="name" required placeholder="எ.கா: சுரேஷ்" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
     </div>
 
-    <!-- பொருள் 2: நல்லெண்ணெய் -->
-    <div class="card">
-      <img src="https://via.placeholder.com/280x160" alt="Oil Image">
-      <h3>நல்லெண்ணெய் (1 Litre)</h3>
-      <div class="vendor">கடை: <b>Raja Organics</b></div>
-      <div class="price">Rs. 850</div>
-      
-      <a class="wa-btn" href="https://wa.me/94770000000?text=வணக்கம்!%20Kada%20Central%20மூலம்%20Raja%20Organics%20கடையின்%20'நல்லெண்ணெய்'%20ஆர்டர்%20செய்ய%20விரும்புகிறேன்." target="_blank">
-        📲 WhatsApp-இல் ஆர்டர் செய்
-      </a>
+    <!-- வாட்ஸ்அப் எண் -->
+    <div style="margin-bottom: 15px;">
+      <label for="phone" style="display: block; font-weight: bold; margin-bottom: 5px;">வாட்ஸ்அப் எண் / WhatsApp No:</label>
+      <input type="tel" id="phone" name="phone" required placeholder="07XXXXXXXX" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
     </div>
 
-  </div>
+    <!-- தேவைப்படும் பொருள் / கருத்து -->
+    <div style="margin-bottom: 15px;">
+      <label for="product" style="display: block; font-weight: bold; margin-bottom: 5px;">தேவையான பொருட்கள் / கருத்துகள் (Order / Survey):</label>
+      <textarea id="product" name="product_details" rows="4" required placeholder="உங்களுக்குத் தேவையான பொருட்கள் மற்றும் அளவைக் குறிப்பிடவும்..." style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"></textarea>
+    </div>
 
-  <!-- தானாக வெப்சைட் முகவரிக்கு QR Code உருவாக்கும் Script -->
-  <script>
-    // தற்போதைய வெப்சைட் லிங்கைத் தானாகவே எடுத்து QR Code உருவாக்கும்
-    new QRCode(document.getElementById("site-qrcode"), {
-      text: window.location.href,
-      width: 150,
-      height: 150
-    });
-  </script>
+    <!-- AI Honeypot Bot Trap (போலி பாட்களைப் பிடிக்கும் ரகசியப் பாதுகாப்புத் துறை) -->
+    <input type="text" name="_gotcha" style="display:none !important;" tabindex="-1" autocomplete="off">
 
-</body>
-</html
+    <!-- சப்மிட் பொத்தான் -->
+    <button type="submit" style="width: 100%; background-color: #27ae60; color: white; padding: 12px; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer;">
+      🚀 பாதுகாப்பாக ஆர்டர் செய் / Submit Order
+    </button>
+  </form>
+</section
