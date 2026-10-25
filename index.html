@@ -3,116 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kada Central | உள்ளூர் வியாபாரிகளின் பொதுத் தளம்</title>
+  <title>Kada Central | Premium Marketplace</title>
   <style>
-    * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-    body { margin: 0; padding: 0; background-color: #0f172a; color: #f8fafc; }
+    * { box-sizing: border-box; font-family: 'Poppins', Arial, sans-serif; }
+    body { margin: 0; padding: 0; background: #0f172a; color: #fff; }
     
-    /* Header Animation */
+    /* Header Shining Effect */
     header {
       background: linear-gradient(135deg, #1e293b, #0f172a);
       padding: 20px;
       text-align: center;
-      border-bottom: 2px solid #38bdf8;
-      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+      border-bottom: 2px solid #3b82f6;
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
     }
     
-    .logo-title {
-      font-size: 24px;
+    .shining-title {
+      font-size: 26px;
       font-weight: bold;
-      background: linear-gradient(90deg, #38bdf8, #4ade80);
+      background: linear-gradient(90deg, #38bdf8, #f43f5e, #38bdf8);
+      background-size: 200% auto;
+      color: transparent;
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      animation: shine 3s linear infinite;
     }
 
-    .sub-title { font-size: 13px; color: #94a3b8; margin-top: 5px; }
+    @keyframes shine {
+      to { background-position: 200% center; }
+    }
 
-    /* Security Notice */
-    .security-badge {
+    /* Product Grid */
+    .container { max-width: 1000px; margin: 30px auto; padding: 0 15px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+
+    /* Shining Card Design */
+    .card {
       background: #1e293b;
+      border-radius: 15px;
+      padding: 15px;
       border: 1px solid #334155;
-      border-left: 4px solid #4ade80;
-      padding: 10px 15px;
-      margin: 20px auto;
-      max-width: 900px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #38bdf8;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+    }
+
+    .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; }
+    .title { font-size: 16px; font-weight: bold; margin: 10px 0 5px; color: #f8fafc; }
+    .vendor { font-size: 12px; color: #94a3b8; }
+    .price-box { display: flex; justify-content: space-between; align-items: center; margin: 15px 0; }
+    .price { font-size: 18px; font-weight: bold; color: #4ade80; }
+    .badge { background: #0284c7; font-size: 10px; padding: 3px 8px; border-radius: 10px; color: white; }
+
+    /* WhatsApp Order Button */
+    .btn-order {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: white;
+      text-align: center;
+      padding: 10px;
       border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
+    }
+    .btn-order:hover { background: #15803d; }
+
+    /* Security Note */
+    .security-bar {
+      background: #1e293b;
+      border-left: 4px solid #f59e0b;
+      padding: 12px;
+      margin-bottom: 25px;
+      border-radius: 6px;
       font-size: 13px;
       color: #cbd5e1;
     }
-
-    /* Multi-Vendor Product Grid */
-    .container { max-width: 950px; margin: 0 auto; padding: 0 15px 30px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
-    
-    .card {
-      background: #1e293b;
-      border-radius: 12px;
-      padding: 15px;
-      border: 1px solid #334155;
-      transition: transform 0.2s;
-    }
-    .card:hover { transform: translateY(-4px); border-color: #38bdf8; }
-    .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
-    
-    .card-title { font-size: 16px; font-weight: bold; margin: 10px 0 5px; color: #f8fafc; }
-    .store-tag { font-size: 12px; color: #f59e0b; background: rgba(245, 158, 11, 0.1); padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 8px; }
-    .price-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-    .price { font-size: 18px; font-weight: bold; color: #4ade80; }
-    
-    .wa-btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      background-color: #25D366;
-      color: white;
-      padding: 10px 0;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-    .wa-btn:hover { background-color: #1ebc57; }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo-title">🏬 Kada Central Marketplace</div>
-    <div class="sub-title">பல உள்ளூர் வியாபாரிகளின் நேரடிப் பொருட்கள் மையம்</div>
+    <div class="shining-title">✨ Kada Central Marketplace</div>
+    <p style="font-size: 12px; color: #94a3b8; margin-top: 5px;">உள்ளூர் கடைகளின் பாதுகாப்பான நேரடி விற்பனை தளம்</p>
   </header>
 
   <div class="container">
     
-    <!-- Fraud Protection Bar -->
-    <div class="security-badge">
-      🛡️ <b>பாதுகாப்பான தளம்:</b> போலி ஆர்டர்கள் மற்றும் பண மோசடியைத் தவிர்க்க <b>Cash on Delivery (பொருள் கைக்கு வந்ததும் பணம்)</b> வசதி மட்டுமே உண்டு.
+    <!-- Cyber Security Guard Note -->
+    <div class="security-bar">
+      🛡️ <b>பாதுகாப்பு வசதி:</b> சைபர் தாக்குதல்கள் மற்றும் பண மோசடியைத் தவிர்க்க <b>Cash on Delivery</b> முறை மட்டுமே பயன்படுத்தப்படுகிறது.
     </div>
 
     <div class="grid">
       
-      <!-- கடை 1 - பொருள் -->
+      <!-- Product 1 -->
       <div class="card">
         <img src="https://via.placeholder.com/260x160" alt="Product">
-        <div class="card-title">இயற்கை சோப் (Soap)</div>
-        <div class="store-tag">🏪 கடை: SK Traders</div>
-        <div class="price-bar">
+        <div class="title">இயற்கை சோப் (Handmade Soap)</div>
+        <div class="vendor">கடை: SK Traders</div>
+        <div class="price-box">
           <div class="price">Rs. 250</div>
+          <span class="badge">🚚 Free Delivery</span>
         </div>
-        <!-- 94770000000 இடத்திற்குப் பதிலாக உங்கள் வாட்ஸ்அப் எண்ணை மாற்றவும் -->
-        <a class="wa-btn" href="https://wa.me/94770000000?text=வணக்கம்!%20Kada%20Central%20மூலம்%20SK%20Traders%20கடையின்%20'இயற்கை%20சோப்'%20ஆர்டர்%20செய்ய விரும்புகிறேன்." target="_blank">
+        <!-- 94770000000 இடத்தில் உங்கள் வாட்ஸ்அப் எண்ணை மாற்றுங்கள் -->
+        <a class="btn-order" href="https://wa.me/94770000000?text=Hello!%20I%20want%20to%20order%20Soap%20from%20Kada%20Central" target="_blank">
           📲 WhatsApp-இல் ஆர்டர் செய்
         </a>
       </div>
 
-      <!-- கடை 2 - பொருள் -->
+      <!-- Product 2 -->
       <div class="card">
         <img src="https://via.placeholder.com/260x160" alt="Product">
-        <div class="card-title">மரச்செக்கு நல்லெண்ணெய் (1L)</div>
-        <div class="store-tag">🏪 கடை: Raja Organics</div>
-        <div class="price-bar">
+        <div class="title">மரச்செக்கு நல்லெண்ணெய் (1L)</div>
+        <div class="vendor">கடை: Raja Organics</div>
+        <div class="price-box">
           <div class="price">Rs. 850</div>
+          <span class="badge">🚚 Local Delivery</span>
         </div>
-        <a class="wa-btn" href="https://wa.me/94770000000?text=வணக்கம்!%20Kada%20Central%20மூலம்%20Raja%20Organics%20கடையின்%20'நல்லெண்ணெய்'%20ஆர்டர்%20செய்ய விரும்புகிறேன்." target="_blank">
+        <a class="btn-order" href="https://wa.me/94770000000?text=Hello!%20I%20want%20to%20order%20Oil%20from%20Kada%20Central" target="_blank">
           📲 WhatsApp-இல் ஆர்டர் செய்
         </a>
       </div>
