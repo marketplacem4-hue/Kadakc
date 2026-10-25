@@ -1,299 +1,112 @@
 <!DOCTYPE html>
 <html lang="ta">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Professional Store</title>
-    <!-- Tailwind CSS for Modern Styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto Central | Vehicle Marketplace</title>
+  
+  <!-- PWA ஆப் ஆக நிறுவ உதவும் அம்சம் -->
+  <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkF1dG8gQ2VudHJhbCIsCiAgInNob3J0X25hbWUiIjogIkF1dG8gQ2VudHJhbCIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGIwZjE5IiwKICAidGhlbWVfY29sb3IiOiAiIzNiODJmNiIKfQ==">
+
+  <style>
+    * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { margin: 0; padding: 0; background-color: #0b0f19; color: #f8fafc; }
     
-    <!-- Custom CSS to Hide Google Branded Header -->
-    <style>
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
-        body { top: 0px !important; }
-        .goog-te-gadget-icon { display: none !important; }
-        .goog-te-gadget-simple {
-            background-color: transparent !important;
-            border: none !important;
-            padding: 0 !important;
-            font-size: 14px !important;
-            cursor: pointer;
-        }
-        .goog-te-gadget-simple span { color: white !important; font-weight: 600; }
-        .goog-te-menu-value span { border: none !important; }
-    </style>
+    header {
+      background: #111827;
+      padding: 18px 20px;
+      text-align: center;
+      border-bottom: 2px solid #3b82f6;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .app-title { font-size: 24px; font-weight: bold; color: #3b82f6; margin: 0; }
+    .sub-title { font-size: 13px; color: #9ca3af; margin-top: 4px; }
 
-    <!-- Google Translate Script -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'ta',
-                includedLanguages: 'ta,en,si',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    /* ஆப் இன்ஸ்டால் பேனர் */
+    .install-banner {
+      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+      color: white;
+      padding: 12px 15px;
+      margin: 15px auto;
+      max-width: 970px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .install-btn { background: white; color: #1d4ed8; border: none; padding: 8px 15px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+
+    .container { max-width: 1000px; margin: 20px auto; padding: 0 15px 30px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    
+    .card { background: #1f2937; border-radius: 12px; padding: 15px; border: 1px solid #374151; }
+    .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
+    
+    .card-title { font-size: 18px; font-weight: bold; margin: 12px 0 4px; color: #ffffff; }
+    .dealer-badge { font-size: 12px; color: #60a5fa; margin-bottom: 10px; }
+    
+    .car-specs { background: #111827; padding: 8px 10px; border-radius: 6px; font-size: 13px; color: #d1d5db; margin-bottom: 12px; line-height: 1.5; }
+
+    .price-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+    .price { font-size: 20px; font-weight: bold; color: #34d399; }
+    
+    .wa-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background-color: #25D366;
+      color: white;
+      padding: 11px 0;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 font-sans pb-28">
+<body>
 
-    <!-- Top Bar with Clean Language Selector -->
-    <div class="bg-gray-900 text-white text-xs py-2 px-4 shadow">
-        <div class="container mx-auto flex justify-between items-center">
-            <span>வணக்கம்! உங்கள் ஆன்லைன் கடைக்கு நல்வரவு</span>
-            
-            <!-- Compact Language Dropdown -->
-            <div class="flex items-center gap-1.5 bg-gray-800 px-3 py-1 rounded-full border border-gray-700">
-                <i class="fa-solid fa-globe text-orange-400"></i>
-                <div id="google_translate_element"></div>
-            </div>
-        </div>
+  <header>
+    <div class="app-title">🚗 Auto Central</div>
+    <div class="sub-title">நம்பகமான கார் மற்றும் வாகன விற்பனைத் தளம்</div>
+  </header>
+
+  <!-- ஆப் ஆக போனில் நிறுவும் பேனர் -->
+  <div class="install-banner">
+    <div>
+      <b style="font-size: 14px;">Auto Central App-ஐ நிறுவவும்</b>
+      <div style="font-size: 11px;">உங்கள் மொபைலில் செயலி (App) போலப் பயன்படுத்தலாம்!</div>
     </div>
+    <button class="install-btn" onclick="alert('உங்கள் பிரௌசர் மெனுவில் (Three Dots) Add to Home Screen / Install App என்பதை அழுத்தவும்!')">📲 Install</button>
+  </div>
 
-    <!-- Header Navigation -->
-    <header class="bg-orange-500 text-white sticky top-0 z-40 shadow-md">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center gap-2">
-            <h1 class="text-xl md:text-2xl font-bold tracking-wide flex items-center gap-2">
-                <i class="fa-solid fa-store"></i> My Online Store
-            </h1>
-            
-            <!-- Search Bar -->
-            <div class="relative w-1/2 hidden md:block">
-                <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="பொருட்களைத் தேடுங்கள் (Search)..." class="w-full px-4 py-1.5 text-black rounded-lg focus:outline-none text-sm">
-            </div>
-
-            <!-- Header Cart Indicator -->
-            <button onclick="openCheckoutModal()" class="relative bg-orange-600 hover:bg-orange-700 px-3 py-1.5 rounded-lg flex items-center gap-2 transition">
-                <i class="fa-solid fa-cart-shopping text-lg"></i>
-                <span class="font-bold text-sm" id="cartCount">0</span>
-            </button>
-        </div>
-    </header>
-
-    <!-- Category Filter Bar -->
-    <nav class="bg-white shadow-sm py-3 mb-6">
-        <div class="container mx-auto px-4 flex gap-3 overflow-x-auto text-sm font-medium text-gray-700">
-            <button onclick="filterCategory('all')" class="px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full font-semibold border border-orange-300 whitespace-nowrap">அனைத்தும் (All)</button>
-            <button onclick="filterCategory('grocery')" class="px-4 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full whitespace-nowrap">மளிகை (Grocery)</button>
-            <button onclick="filterCategory('electronics')" class="px-4 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full whitespace-nowrap">எலெக்ட்ரானிக்ஸ் (Electronics)</button>
-        </div>
-    </nav>
-
-    <!-- Main Content Grid -->
-    <main class="container mx-auto px-4">
-        <h2 class="text-xl font-bold text-gray-800 mb-4">சிறப்புப் பொருட்கள் (Products)</h2>
+  <div class="container">
+    <div class="grid">
+      
+      <!-- மாதிரி கார் 1 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=500" alt="Toyota Vitz">
+        <div class="card-title">Toyota Vitz 2018</div>
+        <div class="dealer-badge">🛡️ Verified Dealer: Lanka Auto</div>
         
-        <!-- Loading Spinner -->
-        <div id="loading" class="text-center py-12">
-            <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-orange-500 border-t-transparent"></div>
-            <p class="mt-2 text-gray-600 font-medium">பொருட்கள் பதிவேற்றப்படுகின்றன...</p>
+        <div class="car-specs">
+          ⚙️ Automatic | ⛽ Petrol<br>
+          🛣️ 45,000 KM | 🎨 Pearl White
         </div>
 
-        <!-- Product Cards Container -->
-        <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            <!-- Products will load dynamically here -->
+        <div class="price-bar">
+          <div class="price">Rs. 6,500,000</div>
         </div>
-    </main>
+        <!-- 94770000000 இடத்தில் உங்கள் வாட்ஸ்அப் எண்ணை மாற்றிச் சேமிக்கவும் -->
+        <a class="wa-btn" href="https://wa.me/94770000000?text=வணக்கம்!%20Auto%20Central%20மூலம்%20'Toyota%20Vitz%202018'%20கார்%20பற்றி%20விசாரிக்க%20விரும்புகிறேன்." target="_blank">
+          📲 வாட்ஸ்அப்பில் விசாரிக்க
+        </a>
+      </div>
 
-    <!-- Floating Bottom Cart Bar -->
-    <div id="cartBar" class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg p-3 z-30 hidden">
-        <div class="container mx-auto flex justify-between items-center">
-            <div>
-                <p class="text-xs text-gray-500">மொத்த தொகை (Total):</p>
-                <p class="text-lg font-bold text-orange-600" id="cartTotal">Rs. 0</p>
-            </div>
-            <button onclick="openCheckoutModal()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-5 rounded-lg flex items-center gap-2 text-sm shadow transition">
-                <i class="fa-brands fa-whatsapp text-lg"></i> ஆர்டரை உறுதி செய் (Checkout)
-            </button>
-        </div>
     </div>
+  </div>
 
-    <!-- Checkout Modal with Customer Details & Address -->
-    <div id="checkoutModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg max-w-md w-full p-6 shadow-xl relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-                <i class="fa-solid fa-address-book text-orange-500"></i> டெலிவரி விவரங்கள் (Delivery Details)
-            </h3>
-            
-            <form id="orderForm" onsubmit="submitOrder(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-gray-600 mb-1">வாடிக்கையாளர் பெயர் (Full Name)</label>
-                    <input type="text" id="custName" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:border-orange-500" placeholder="உங்கள் பெயரை உள்ளிடவும்">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-gray-600 mb-1">மின்னஞ்சல் (Email Address)</label>
-                    <input type="email" id="custEmail" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:border-orange-500" placeholder="example@gmail.com">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-gray-600 mb-1">தொலைபேசி எண் (Phone Number)</label>
-                    <input type="tel" id="custPhone" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:border-orange-500" placeholder="0771234567">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-gray-600 mb-1">டெலிவரி முகவரி (Delivery Address)</label>
-                    <textarea id="custAddress" required rows="3" class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:border-orange-500" placeholder="வீட்டு எண், வீதி, ஊர் மற்றும் அஞ்சல் குறியீடு"></textarea>
-                </div>
-                
-                <div class="border-t pt-3">
-                    <p class="text-sm font-bold text-gray-700 flex justify-between">
-                        <span>செலுத்த வேண்டிய மொத்த தொகை:</span>
-                        <span class="text-orange-600" id="modalTotal">Rs. 0</span>
-                    </p>
-                </div>
-
-                <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2.5 rounded-lg flex items-center justify-center gap-2 text-sm shadow transition">
-                    <i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப் மூலம் ஆர்டர் அனுப்பவும்
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- JavaScript Engine -->
-    <script>
-        const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQIW6nyj8m8_cIGW6k6Akpu86Fo7U_5rfKiYz8nKHatC7GWkZdC6vWBWvZHRInD5vPBMfP-t6ZD2Fye/pub?gid=0&single=true&output=csv';
-        
-        // உங்கள் வாட்ஸ்அப் எண்ணை இங்கே மாற்றவும் (உதாரணமாக: 94770000000)
-        const myPhoneNumber = "94770000000"; 
-
-        let allProducts = [];
-        let cart = [];
-
-        async function fetchProducts() {
-            try {
-                const response = await fetch(csvUrl);
-                const data = await response.text();
-                
-                const rows = data.split('\n').map(row => row.trim()).filter(row => row);
-
-                allProducts = rows.slice(1).map(row => {
-                    const values = row.split(',').map(v => v.trim());
-                    return {
-                        name: values[0],
-                        price: parseFloat(values[1]) || 0,
-                        originalPrice: values[2],
-                        category: values[3],
-                        imageUrl: values[4]
-                    };
-                });
-
-                document.getElementById('loading').style.display = 'none';
-                displayProducts(allProducts);
-            } catch (error) {
-                console.error('Error fetching CSV:', error);
-                document.getElementById('loading').innerHTML = '<p class="text-red-500">பொருட்களை ஏற்றுவதில் சிக்கல் உள்ளது.</p>';
-            }
-        }
-
-        function displayProducts(products) {
-            const grid = document.getElementById('productGrid');
-            grid.innerHTML = '';
-
-            products.forEach((product, index) => {
-                const card = `
-                    <div class="bg-white rounded-lg shadow hover:shadow-lg transition duration-200 overflow-hidden border border-gray-100 flex flex-col justify-between">
-                        <div>
-                            <img src="${product.imageUrl}" alt="${product.name}" class="w-full h-36 object-cover bg-gray-50" onerror="this.src='https://via.placeholder.com/250x160?text=No+Image'">
-                            <div class="p-3">
-                                <span class="text-xs font-semibold uppercase bg-orange-50 text-orange-600 px-2 py-0.5 rounded">${product.category}</span>
-                                <h3 class="text-sm font-semibold text-gray-800 mt-1 line-clamp-2">${product.name}</h3>
-                                <div class="mt-2 flex items-baseline gap-2">
-                                    <span class="text-base font-bold text-orange-600">Rs. ${product.price}</span>
-                                    ${product.originalPrice ? `<span class="text-xs text-gray-400 line-through">Rs. ${product.originalPrice}</span>` : ''}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-3 pt-0">
-                            <button onclick="addToCart(${index})" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-1.5 rounded-md flex items-center justify-center gap-1.5 text-sm transition">
-                                <i class="fa-solid fa-cart-plus"></i> கார்ட்டில் சேர்
-                            </button>
-                        </div>
-                    </div>
-                `;
-                grid.innerHTML += card;
-            });
-        }
-
-        function addToCart(index) {
-            const product = allProducts[index];
-            cart.push(product);
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            document.getElementById('cartCount').innerText = cart.length;
-            
-            let total = cart.reduce((sum, item) => sum + item.price, 0);
-            document.getElementById('cartTotal').innerText = `Rs. ${total}`;
-            document.getElementById('modalTotal').innerText = `Rs. ${total}`;
-
-            const cartBar = document.getElementById('cartBar');
-            if (cart.length > 0) {
-                cartBar.classList.remove('hidden');
-            } else {
-                cartBar.classList.add('hidden');
-            }
-        }
-
-        function openCheckoutModal() {
-            if (cart.length === 0) {
-                alert("உங்கள் கார்ட்டில் எந்தப் பொருட்களும் இல்லை!");
-                return;
-            }
-            document.getElementById('checkoutModal').classList.remove('hidden');
-        }
-
-        function closeCheckoutModal() {
-            document.getElementById('checkoutModal').classList.add('hidden');
-        }
-
-        function submitOrder(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('custName').value;
-            const email = document.getElementById('custEmail').value;
-            const phone = document.getElementById('custPhone').value;
-            const address = document.getElementById('custAddress').value;
-
-            let message = `🛒 *புதிய ஆன்லைன் ஆர்டர் (New Order)*\n\n`;
-            message += `👤 *பெயர்:* ${name}\n`;
-            message += `📧 *ஈமெயில்:* ${email}\n`;
-            message += `📱 *தொலைபேசி:* ${phone}\n`;
-            message += `📍 *முகவரி:* ${address}\n\n`;
-            message += `📦 *ஆர்டர் செய்த பொருட்கள்:*\n`;
-
-            let total = 0;
-            cart.forEach((item, i) => {
-                message += `${i + 1}. ${item.name} - Rs.${item.price}\n`;
-                total += item.price;
-            });
-
-            message += `\n💰 *மொத்தத் தொகை:* Rs.${total}`;
-
-            const whatsappUrl = `https://wa.me/${myPhoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-            closeCheckoutModal();
-        }
-
-        function filterCategory(category) {
-            if (category === 'all') {
-                displayProducts(allProducts);
-            } else {
-                const filtered = allProducts.filter(p => p.category.toLowerCase() === category.toLowerCase());
-                displayProducts(filtered);
-            }
-        }
-
-        function filterProducts() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = allProducts.filter(p => p.name.toLowerCase().includes(query));
-            displayProducts(filtered);
-        }
-
-        // Initialize App
-        fetchProducts();
-    </script>
 </body>
 </html
