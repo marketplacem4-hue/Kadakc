@@ -3,135 +3,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kada Central | Premium Marketplace</title>
+  <title>Kada Central | Local Online Marketplace</title>
+  
+  <!-- QR Code Generator Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
   <style>
-    * { box-sizing: border-box; font-family: 'Poppins', Arial, sans-serif; }
-    body { margin: 0; padding: 0; background: #0f172a; color: #fff; }
+    * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { margin: 0; padding: 0; background-color: #f8f9fa; color: #333; }
     
-    /* Header Shining Effect */
-    header {
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      padding: 20px;
-      text-align: center;
-      border-bottom: 2px solid #3b82f6;
-      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
-    }
+    /* Header & Navigation Bar */
+    header { background-color: #1a252f; color: white; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .brand-title { font-size: 20px; font-weight: bold; color: #f39c12; letter-spacing: 1px; }
     
-    .shining-title {
-      font-size: 26px;
-      font-weight: bold;
-      background: linear-gradient(90deg, #38bdf8, #f43f5e, #38bdf8);
-      background-size: 200% auto;
-      color: transparent;
-      -webkit-background-clip: text;
-      animation: shine 3s linear infinite;
-    }
+    /* Globe Language Selector (சிறிய உலக உருண்டை ஐகான்) */
+    .lang-box { display: flex; align-items: center; gap: 5px; font-size: 14px; cursor: pointer; background: #2c3e50; padding: 5px 10px; border-radius: 20px; border: 1px solid #455a64; }
+    .lang-box select { background: transparent; color: white; border: none; font-size: 13px; outline: none; cursor: pointer; }
+    .lang-box select option { color: #333; background: white; }
 
-    @keyframes shine {
-      to { background-position: 200% center; }
-    }
+    /* Top Section with Website QR Code */
+    .hero-section { background: white; border-bottom: 1px solid #e0e0e0; padding: 15px 20px; text-align: center; }
+    .hero-section h2 { margin: 0 0 5px 0; font-size: 18px; color: #2c3e50; }
+    .hero-section p { font-size: 12px; color: #666; margin: 0 0 10px 0; }
+    
+    .qr-wrapper { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 5px; }
+    #site-qrcode { background: white; padding: 5px; border: 1px solid #ddd; border-radius: 5px; }
 
-    /* Product Grid */
-    .container { max-width: 1000px; margin: 30px auto; padding: 0 15px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    /* Product Grid & Cards */
+    .container { max-width: 1000px; margin: 20px auto; padding: 0 10px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; }
+    
+    .card { background: white; border-radius: 8px; border: 1px solid #e0e0e0; overflow: hidden; transition: transform 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .card:hover { transform: translateY(-3px); }
+    .card img { width: 100%; height: 160px; object-fit: cover; }
+    
+    .card-body { padding: 12px; }
+    .card-title { font-size: 15px; font-weight: bold; margin: 0 0 5px 0; color: #2c3e50; }
+    .card-vendor { font-size: 11px; color: #7f8c8d; margin-bottom: 8px; }
+    .card-price { font-size: 16px; font-weight: bold; color: #e74c3c; margin-bottom: 12px; }
+    
+    .wa-btn { display: flex; align-items: center; justify-content: center; gap: 6px; background-color: #25D366; color: white; text-decoration: none; padding: 8px; border-radius: 5px; font-weight: bold; font-size: 13px; }
+    .wa-btn:hover { background-color: #20ba5a; }
 
-    /* Shining Card Design */
-    .card {
-      background: #1e293b;
-      border-radius: 15px;
-      padding: 15px;
-      border: 1px solid #334155;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #38bdf8;
-      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
-    }
-
-    .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; }
-    .title { font-size: 16px; font-weight: bold; margin: 10px 0 5px; color: #f8fafc; }
-    .vendor { font-size: 12px; color: #94a3b8; }
-    .price-box { display: flex; justify-content: space-between; align-items: center; margin: 15px 0; }
-    .price { font-size: 18px; font-weight: bold; color: #4ade80; }
-    .badge { background: #0284c7; font-size: 10px; padding: 3px 8px; border-radius: 10px; color: white; }
-
-    /* WhatsApp Order Button */
-    .btn-order {
-      display: block;
-      width: 100%;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: white;
-      text-align: center;
-      padding: 10px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
-    }
-    .btn-order:hover { background: #15803d; }
-
-    /* Security Note */
-    .security-bar {
-      background: #1e293b;
-      border-left: 4px solid #f59e0b;
-      padding: 12px;
-      margin-bottom: 25px;
-      border-radius: 6px;
-      font-size: 13px;
-      color: #cbd5e1;
-    }
+    /* Trust Badge / Protection Note */
+    .trust-footer { text-align: center; font-size: 12px; color: #7f8c8d; margin: 30px 0 15px 0; border-top: 1px solid #ddd; padding-top: 15px; }
   </style>
 </head>
 <body>
 
+  <!-- Header Section with Globe Icon -->
   <header>
-    <div class="shining-title">✨ Kada Central Marketplace</div>
-    <p style="font-size: 12px; color: #94a3b8; margin-top: 5px;">உள்ளூர் கடைகளின் பாதுகாப்பான நேரடி விற்பனை தளம்</p>
+    <div class="brand-title">🛒 Kada Central</div>
+    
+    <!-- 🌐 உலக உருண்டை மொழி மாற்றி -->
+    <div class="lang-box">
+      <span>🌐</span>
+      <select id="languageSelect" onchange="changeLanguage()">
+        <option value="ta">தமிழ்</option>
+        <option value="en">English</option>
+      </select>
+    </div>
   </header>
 
-  <div class="container">
-    
-    <!-- Cyber Security Guard Note -->
-    <div class="security-bar">
-      🛡️ <b>பாதுகாப்பு வசதி:</b> சைபர் தாக்குதல்கள் மற்றும் பண மோசடியைத் தவிர்க்க <b>Cash on Delivery</b> முறை மட்டுமே பயன்படுத்தப்படுகிறது.
+  <!-- Website QR Code Showcase -->
+  <div class="hero-section">
+    <h2 id="txt-hero-title">உள்ளூர் சந்தை & நேரடி விற்பனை</h2>
+    <p id="txt-hero-desc">தளத்தைப் பகிர அல்லது திறக்க கேமராவால் Scan செய்யுங்கள்</p>
+    <div class="qr-wrapper">
+      <div id="site-qrcode"></div>
     </div>
+  </div>
 
+  <!-- Products Container -->
+  <div class="container">
     <div class="grid">
       
       <!-- Product 1 -->
       <div class="card">
-        <img src="https://via.placeholder.com/260x160" alt="Product">
-        <div class="title">இயற்கை சோப் (Handmade Soap)</div>
-        <div class="vendor">கடை: SK Traders</div>
-        <div class="price-box">
-          <div class="price">Rs. 250</div>
-          <span class="badge">🚚 Free Delivery</span>
+        <img src="https://via.placeholder.com/240x160" alt="Soap">
+        <div class="card-body">
+          <div class="card-title" id="p1-title">இயற்கை சோப் (Handmade Soap)</div>
+          <div class="card-vendor"><span id="txt-seller">விற்பனையாளர்</span>: SK Traders</div>
+          <div class="card-price">Rs. 250</div>
+          <!-- உங்கள் வாட்ஸ்அப் எண்ணை 94770000000 இடத்தில் மாற்றவும் -->
+          <a class="wa-btn" href="https://wa.me/94770000000?text=Hello,%20I%20want%20to%20order%20Handmade%20Soap%20from%20Kada%20Central" target="_blank">
+            📲 <span class="txt-btn">WhatsApp ஆர்டர்</span>
+          </a>
         </div>
-        <!-- 94770000000 இடத்தில் உங்கள் வாட்ஸ்அப் எண்ணை மாற்றுங்கள் -->
-        <a class="btn-order" href="https://wa.me/94770000000?text=Hello!%20I%20want%20to%20order%20Soap%20from%20Kada%20Central" target="_blank">
-          📲 WhatsApp-இல் ஆர்டர் செய்
-        </a>
       </div>
 
       <!-- Product 2 -->
       <div class="card">
-        <img src="https://via.placeholder.com/260x160" alt="Product">
-        <div class="title">மரச்செக்கு நல்லெண்ணெய் (1L)</div>
-        <div class="vendor">கடை: Raja Organics</div>
-        <div class="price-box">
-          <div class="price">Rs. 850</div>
-          <span class="badge">🚚 Local Delivery</span>
+        <img src="https://via.placeholder.com/240x160" alt="Oil">
+        <div class="card-body">
+          <div class="card-title" id="p2-title">மரச்செக்கு நல்லெண்ணெய் (1L)</div>
+          <div class="card-vendor"><span id="txt-seller2">விற்பனையாளர்</span>: Raja Organics</div>
+          <div class="card-price">Rs. 850</div>
+          <a class="wa-btn" href="https://wa.me/94770000000?text=Hello,%20I%20want%20to%20order%20Sesame%20Oil%20from%20Kada%20Central" target="_blank">
+            📲 <span class="txt-btn2">WhatsApp ஆர்டர்</span>
+          </a>
         </div>
-        <a class="btn-order" href="https://wa.me/94770000000?text=Hello!%20I%20want%20to%20order%20Oil%20from%20Kada%20Central" target="_blank">
-          📲 WhatsApp-இல் ஆர்டர் செய்
-        </a>
       </div>
 
     </div>
+
+    <div class="trust-footer" id="txt-footer">
+      🔒 பாதுகாக்கப்பட்ட தளம் | Cash on Delivery (பொருள் வந்ததும் பணம் செலுத்தும் வசதி)
+    </div>
   </div>
 
+  <!-- JavaScript for Language Change & QR Code -->
+  <script>
+    // QR Code Generation
+    new QRCode(document.getElementById("site-qrcode"), {
+      text: window.location.href,
+      width: 80,
+      height: 80
+    });
+
+    // Language Toggle Functionality
+    function changeLanguage() {
+      var lang = document.getElementById("languageSelect").value;
+      if (lang === "en") {
+        document.getElementById("txt-hero-title").innerText = "Local Marketplace & Direct Orders";
+        document.getElementById("txt-hero-desc").innerText = "Scan QR code to open and share this store";
+        document.getElementById("p1-title").innerText = "Handmade Natural Soap";
+        document.getElementById("p2-title").innerText = "Pure Sesame Oil (1L)";
+        document.getElementById("txt-seller").innerText = "Seller";
+        document.getElementById("txt-seller2").innerText = "Seller";
+        document.querySelectorAll('.txt-btn').forEach(el => el.innerText = "Order on WhatsApp");
+        document.querySelectorAll('.txt-btn2').forEach(el => el.innerText = "Order on WhatsApp");
+        document.getElementById("txt-footer").innerText = "🔒 Secure Platform | Cash on Delivery Available";
+      } else {
+        document.getElementById("txt-hero-title").innerText = "உள்ளூர் சந்தை & நேரடி விற்பனை";
+        document.getElementById("txt-hero-desc").innerText = "தளத்தைப் பகிர அல்லது திறக்க கேமராவால் Scan செய்யுங்கள்";
+        document.getElementById("p1-title").innerText = "இயற்கை சோப் (Handmade Soap)";
+        document.getElementById("p2-title").innerText = "மரச்செக்கு நல்லெண்ணெய் (1L)";
+        document.getElementById("txt-seller").innerText = "விற்பனையாளர்";
+        document.getElementById("txt-seller2").innerText = "விற்பனையாளர்";
+        document.querySelectorAll('.txt-btn').forEach(el => el.innerText = "WhatsApp ஆர்டர்");
+        document.querySelectorAll('.txt-btn2').forEach(el => el.innerText = "WhatsApp ஆர்டர்");
+        document.getElementById("txt-footer").innerText = "🔒 பாதுகாக்கப்பட்ட தளம் | Cash on Delivery (பொருள் வந்ததும் பணம் செலுத்தும் வசதி)";
+      }
+    }
+  </script>
 </body>
 </html
