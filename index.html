@@ -3,110 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auto Central | Vehicle Marketplace</title>
-  
-  <!-- PWA ஆப் ஆக நிறுவ உதவும் அம்சம் -->
-  <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkF1dG8gQ2VudHJhbCIsCiAgInNob3J0X25hbWUiIjogIkF1dG8gQ2VudHJhbCIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGIwZjE5IiwKICAidGhlbWVfY29sb3IiOiAiIzNiODJmNiIKfQ==">
-
+  <title>Kada Central - Vendor Dashboard</title>
   <style>
     * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-    body { margin: 0; padding: 0; background-color: #0b0f19; color: #f8fafc; }
+    body { background-color: #0f172a; color: #fff; margin: 0; padding: 20px; }
     
-    header {
-      background: #111827;
-      padding: 18px 20px;
-      text-align: center;
-      border-bottom: 2px solid #3b82f6;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .app-title { font-size: 24px; font-weight: bold; color: #3b82f6; margin: 0; }
-    .sub-title { font-size: 13px; color: #9ca3af; margin-top: 4px; }
+    .container { max-width: 500px; margin: 20px auto; background: #1e293b; padding: 25px; border-radius: 12px; border: 1px solid #334155; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+    h2 { text-align: center; color: #38bdf8; margin-top: 0; }
+    p { font-size: 13px; color: #94a3b8; text-align: center; }
 
-    /* ஆப் இன்ஸ்டால் பேனர் */
-    .install-banner {
-      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
-      color: white;
-      padding: 12px 15px;
-      margin: 15px auto;
-      max-width: 970px;
-      border-radius: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .install-btn { background: white; color: #1d4ed8; border: none; padding: 8px 15px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; font-size: 13px; margin-bottom: 5px; color: #cbd5e1; }
+    input { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: #fff; font-size: 14px; }
+    
+    .btn { width: 100%; background: #22c55e; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 15px; margin-top: 10px; }
+    .btn:hover { background: #16a34a; }
 
-    .container { max-width: 1000px; margin: 20px auto; padding: 0 15px 30px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-    
-    .card { background: #1f2937; border-radius: 12px; padding: 15px; border: 1px solid #374151; }
-    .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
-    
-    .card-title { font-size: 18px; font-weight: bold; margin: 12px 0 4px; color: #ffffff; }
-    .dealer-badge { font-size: 12px; color: #60a5fa; margin-bottom: 10px; }
-    
-    .car-specs { background: #111827; padding: 8px 10px; border-radius: 6px; font-size: 13px; color: #d1d5db; margin-bottom: 12px; line-height: 1.5; }
-
-    .price-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-    .price { font-size: 20px; font-weight: bold; color: #34d399; }
-    
-    .wa-btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      background-color: #25D366;
-      color: white;
-      padding: 11px 0;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 6px;
-      font-size: 14px;
-    }
+    .calc-box { background: #0f172a; border: 1px dashed #38bdf8; padding: 12px; border-radius: 6px; margin-top: 15px; font-size: 13px; }
+    .calc-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="app-title">🚗 Auto Central</div>
-    <div class="sub-title">நம்பகமான கார் மற்றும் வாகன விற்பனைத் தளம்</div>
-  </header>
-
-  <!-- ஆப் ஆக போனில் நிறுவும் பேனர் -->
-  <div class="install-banner">
-    <div>
-      <b style="font-size: 14px;">Auto Central App-ஐ நிறுவவும்</b>
-      <div style="font-size: 11px;">உங்கள் மொபைலில் செயலி (App) போலப் பயன்படுத்தலாம்!</div>
-    </div>
-    <button class="install-btn" onclick="alert('உங்கள் பிரௌசர் மெனுவில் (Three Dots) Add to Home Screen / Install App என்பதை அழுத்தவும்!')">📲 Install</button>
-  </div>
-
   <div class="container">
-    <div class="grid">
-      
-      <!-- மாதிரி கார் 1 -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=500" alt="Toyota Vitz">
-        <div class="card-title">Toyota Vitz 2018</div>
-        <div class="dealer-badge">🛡️ Verified Dealer: Lanka Auto</div>
-        
-        <div class="car-specs">
-          ⚙️ Automatic | ⛽ Petrol<br>
-          🛣️ 45,000 KM | 🎨 Pearl White
-        </div>
+    <h2>🏪 கடைக்காரர் கணக்கு பதிவு (Vendor Entry)</h2>
+    <p>உள்ளூர் வியாபாரிகள் தங்களின் பொருட்களை இங்கு எளிதாகப் பதிவேற்றலாம்.</p>
 
-        <div class="price-bar">
-          <div class="price">Rs. 6,500,000</div>
-        </div>
-        <!-- 94770000000 இடத்தில் உங்கள் வாட்ஸ்அப் எண்ணை மாற்றிச் சேமிக்கவும் -->
-        <a class="wa-btn" href="https://wa.me/94770000000?text=வணக்கம்!%20Auto%20Central%20மூலம்%20'Toyota%20Vitz%202018'%20கார்%20பற்றி%20விசாரிக்க%20விரும்புகிறேன்." target="_blank">
-          📲 வாட்ஸ்அப்பில் விசாரிக்க
-        </a>
-      </div>
-
+    <div class="form-group">
+      <label>கடையின் பெயர் (Store Name):</label>
+      <input type="text" id="vStore" placeholder="எ.கா: SK Traders">
     </div>
+
+    <div class="form-group">
+      <label>பொருளின் பெயர் (Product Name):</label>
+      <input type="text" id="vProduct" placeholder="எ.கா: இயற்கை சோப்">
+    </div>
+
+    <div class="form-group">
+      <label>விற்பனை விலை (Price in Rs.):</label>
+      <input type="number" id="vPrice" oninput="calculateCommission()" placeholder="எ.கா: 500">
+    </div>
+
+    <!-- கணக்காளர் பிரிவு (Automatic Calculation) -->
+    <div class="calc-box">
+      <div class="calc-row">
+        <span>பொருளின் மொத்த விலை:</span>
+        <b id="txtTotal">Rs. 0</b>
+      </div>
+      <div class="calc-row" style="color: #f59e0b;">
+        <span>தளத்திற்கான கமிஷன் (2%):</span>
+        <b id="txtComm">Rs. 0</b>
+      </div>
+      <div class="calc-row" style="color: #4ade80;">
+        <span>கடைக்காரருக்குக் கிடைக்கும் தொகை:</span>
+        <b id="txtVendorPay">Rs. 0</b>
+      </div>
+    </div>
+
+    <button class="btn" onclick="submitVendorData()">🚀 பொருளைத் தளத்தில் சேர்க்கவும்</button>
   </div>
+
+  <script>
+    // கமிஷன் கணக்கிடும் சுலபமான முறை
+    function calculateCommission() {
+      var price = parseFloat(document.getElementById("vPrice").value) || 0;
+      var commission = price * 0.02; // 2% கமிஷன்
+      var vendorPayout = price - commission;
+
+      document.getElementById("txtTotal").innerText = "Rs. " + price.toFixed(2);
+      document.getElementById("txtComm").innerText = "Rs. " + commission.toFixed(2);
+      document.getElementById("txtVendorPay").innerText = "Rs. " + vendorPayout.toFixed(2);
+    }
+
+    function submitVendorData() {
+      var store = document.getElementById("vStore").value;
+      var prod = document.getElementById("vProduct").value;
+      var price = document.getElementById("vPrice").value;
+
+      if(!store || !prod || !price) {
+        alert("தயவுசெய்து அனைத்து விவரங்களையும் நிரப்பவும்!");
+        return;
+      }
+
+      alert("நன்றி! " + store + " கடையின் " + prod + " பொருள் വിജയகரப் பதிவு செய்யப்பட்டது. சரிபார்த்த பின் நேரலையில் சேர்க்கப்படும்!");
+    }
+  </script>
 
 </body>
 </html
