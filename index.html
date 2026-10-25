@@ -1,35 +1,137 @@
-<!-- Kada Central - Secure Order & Survey Form -->
-<section id="order-section" style="max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; font-family: Arial, sans-serif; background-color: #f9f9f9;">
-  <h2 style="color: #2c3e50; text-align: center;">🛒 Kada Central - ஆன்லைன் ஆர்டர் & கருத்துப் படிவம்</h2>
-  <p style="text-align: center; color: #7f8c8d; font-size: 14px;">🔒 AI Anti-Spam & SSL பாதுகாக்கப்பட்ட படிவம்</p>
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kada Central - எங்களது ஆன்லைன் கடை</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background-color: #232f3e;
+            color: white;
+            padding: 20px 0;
+        }
+        .logo-box {
+            font-size: 28px;
+            font-weight: bold;
+            background-color: #ff9900;
+            color: black;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .container {
+            padding: 30px;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        #google_translate_element {
+            margin: 15px 0;
+        }
+    </style>
 
-  <!-- Formspree அல்லது உங்கள் backend இணைப்பிற்கான படிவம் -->
-  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="kadaOrderForm">
-    
-    <!-- வாடிக்கையாளர் பெயர் -->
-    <div style="margin-bottom: 15px;">
-      <label for="name" style="display: block; font-weight: bold; margin-bottom: 5px;">உங்கள் பெயர் / Name:</label>
-      <input type="text" id="name" name="name" required placeholder="எ.கா: சுரேஷ்" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+    <!-- Google Translate Script (பல மொழிகளுக்கு மாற்ற) -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'ta'}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+    <header>
+        <!-- கடையின் லோகோ மற்றும் பெயர் -->
+        <div class="logo-box">🛍️ KADA CENTRAL</div>
+        <p>உங்கள் தேவைகளுக்கான சிறந்த ஆன்லைன் மையம்</p>
+    </header>
+
+    <div class="container">
+        <!-- மொழி மாற்றும் வசதி -->
+        <p><strong>மொழியைத் தேர்ந்தெடுக்கவும் (Select Language):</strong></p>
+        <div id="google_translate_element"></div>
+
+        <hr>
+
+        <h2>எங்களது கடைக்கு உங்களை அன்போடு வரவேற்கிறோம்!</h2>
+        <p>இங்கே உங்களுக்கான சிறந்த பொருட்கள் மற்றும் சேவைகள் உடனுக்குடன் கிடைக்கும்.</p>
     </div>
 
-    <!-- வாட்ஸ்அப் எண் -->
-    <div style="margin-bottom: 15px;">
-      <label for="phone" style="display: block; font-weight: bold; margin-bottom: 5px;">வாட்ஸ்அப் எண் / WhatsApp No:</label>
-      <input type="tel" id="phone" name="phone" required placeholder="07XXXXXXXX" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
-    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kada Central - எங்களது ஆன்லைன் கடை</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background-color: #232f3e;
+            color: white;
+            padding: 20px 0;
+        }
+        .logo-box {
+            font-size: 28px;
+            font-weight: bold;
+            background-color: #ff9900;
+            color: black;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .container {
+            padding: 30px;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        #google_translate_element {
+            margin: 15px 0;
+        }
+    </style>
 
-    <!-- தேவைப்படும் பொருள் / கருத்து -->
-    <div style="margin-bottom: 15px;">
-      <label for="product" style="display: block; font-weight: bold; margin-bottom: 5px;">தேவையான பொருட்கள் / கருத்துகள் (Order / Survey):</label>
-      <textarea id="product" name="product_details" rows="4" required placeholder="உங்களுக்குத் தேவையான பொருட்கள் மற்றும் அளவைக் குறிப்பிடவும்..." style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"></textarea>
-    </div>
+    <!-- Google Translate Script (பல மொழிகளுக்கு மாற்ற) -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'ta'}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
 
-    <!-- AI Honeypot Bot Trap (போலி பாட்களைப் பிடிக்கும் ரகசியப் பாதுகாப்புத் துறை) -->
-    <input type="text" name="_gotcha" style="display:none !important;" tabindex="-1" autocomplete="off">
+    <header>
+        <!-- கடையின் லோகோ மற்றும் பெயர் -->
+        <div class="logo-box">🛍️ KADA CENTRAL</div>
+        <p>உங்கள் தேவைகளுக்கான சிறந்த ஆன்லைன் மையம்</p>
+    </header>
 
-    <!-- சப்மிட் பொத்தான் -->
-    <button type="submit" style="width: 100%; background-color: #27ae60; color: white; padding: 12px; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer;">
-      🚀 பாதுகாப்பாக ஆர்டர் செய் / Submit Order
-    </button>
-  </form>
-</section
+    <div class="container">
+        <!-- மொழி மாற்றும் வசதி -->
+        <p><strong>மொழியைத் தேர்ந்தெடுக்கவும் (Select Language):</strong></p>
+        <div id="google_translate_element"></div>
+
+        <hr>
+
+        <h2>எங்களது கடைக்கு உங்களை அன்போடு வரவேற்கிறோம்!</h2>
